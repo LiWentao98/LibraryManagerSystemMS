@@ -44,4 +44,11 @@ public class ReaderController {
         return readerService.select(reader);
     }
 
+    //测试controller
+    @ResponseBody
+    @GetMapping("/add_new")
+    public String addNew(){
+        return "index.html";
+    }
+
 }
