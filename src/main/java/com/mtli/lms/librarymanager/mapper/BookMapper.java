@@ -30,4 +30,7 @@ public interface BookMapper {
     //根据其他条件查询图书
     @SelectProvider(type = BooksqlProvider.class,method = "selectBookByConditions")
     List<Book> selectBookByConditions(Book book);
+    //查询所有图书
+    @SelectProvider(type = BooksqlProvider.class,method = "selectAll")
+    List<Book> selectAllBook();
 }

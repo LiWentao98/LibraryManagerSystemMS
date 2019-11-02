@@ -33,4 +33,9 @@ public class BookServiceImpl implements BookService {
     public List<Book> selectByConditions(Book book) {
         return bookMapper.selectBookByConditions(book);
     }
+
+    @Override
+    public List<Book> selectAllBook() {
+        return bookMapper.selectAllBook();
+    }
 }

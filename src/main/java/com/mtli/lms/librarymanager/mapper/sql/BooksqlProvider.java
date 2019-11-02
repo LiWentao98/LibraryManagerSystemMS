@@ -122,6 +122,13 @@ public class BooksqlProvider {
         }}.toString();
     }
 
+    public String selectAll(){
+        return new SQL(){{
+            SELECT("*");
+            FROM("book");
+        }}.toString();
+    }
+
 
 
 

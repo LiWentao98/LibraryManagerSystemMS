@@ -19,4 +19,6 @@ public interface BookService {
     void update(Book book);
     //根据图书条件查询
     List<Book> selectByConditions(Book book);
+    //查询所有图书
+    List<Book> selectAllBook();
 }
