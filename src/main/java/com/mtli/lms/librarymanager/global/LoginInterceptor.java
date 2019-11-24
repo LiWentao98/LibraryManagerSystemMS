@@ -25,12 +25,12 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         //访问其他路径有没有登录
         HttpSession session = httpServletRequest.getSession();
-        if(session.getAttribute("employee")!=null){//已登录
+        if(session.getAttribute("reader")!=null){//已登录
             return true;
         }
 
         //其他情况都是没有登录的，不允许通过
-        httpServletResponse.sendRedirect("/to_login");
+        httpServletResponse.sendRedirect("/reader/to_login");
         return false;
     }
 

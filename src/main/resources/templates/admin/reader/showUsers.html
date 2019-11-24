@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/Admin/showUsers.js"></script>
+</head>
+<body>
+
+<div th:replace="/admin/top1 :: mytop" ></div>
+
+<div th:replace="/admin/side1 :: side" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <h3 style="text-align: center">所有用户</h3>
+    <table>
+        <tr>
+            <th>借书证号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>读者类别</th>
+            <th>所属院系</th>
+            <th>电话号码</th>
+            <th>借书证状态</th>
+            <th>已借书数量</th>
+        </tr>
+        <tr th:each="reader:${r}">
+            <td><label th:text="${reader.getR_id()}"></label></td>
+            <td><label th:text="${reader.getR_name()}"></label></td>
+            <td><label th:text="${reader.getR_sex()}"></label></td>
+            <td th:if="${reader.getR_type()} == 10"><label th:text="本科生"></label></td>
+            <td th:if="${reader.getR_type()} == 20"><label th:text="专科生"></label></td>
+            <td th:if="${reader.getR_type()} == 30"><label th:text="硕士生"></label></td>
+            <td th:if="${reader.getR_type()} == 40"><label th:text="教师"></label></td>
+            <td><label th:text="${reader.getR_dept()}"></label></td>
+            <td><label th:text="${reader.getR_phone()}"></label></td>
+            <td><label th:text="${reader.getR_status()}"></label></td>
+            <td><label th:text="${reader.getR_borrow_q()}"></label></td>
+            <td><button th:value="${reader.getR_id()}">删除</button></td>
+        </tr>
+    </table>
+    <br>
+    <div style="position:absolute;right: 110px ">
+        <label id="lab1" th:text="${pageNum}">1</label>/<label id="lab2" th:text="${pageCount}">1</label>
+    </div>
+
+    <a id="prePage" th:href="@{/admin/show_users(pageNum=${pageNum -1})}"  style="position: absolute; right: 140px;background-color: #aaaaaa">上一页</a>
+    <a id="nextPage" th:href="@{/admin/show_users(pageNum=${pageNum +1})}"  style="position: absolute; right: 60px;background-color: #aaaaaa">下一页</a>
+</div>
+</body>
+</html>

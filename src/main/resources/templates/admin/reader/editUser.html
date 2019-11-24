@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/messages_zh.min.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/Admin/editUser.js"></script>
+
+</head>
+<body>
+
+<div th:replace="/admin/top1 :: mytop" ></div>
+
+<div th:replace="/admin/side1 :: side" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <h3 style="text-align: center">修改用户信息</h3>
+    <form id="editUserForm" action="#">
+        <label>请输入借书证</label><br>
+        <input type="number" id="readerId" name="r_id"><br><br>
+        <label>修改类别</label><br>
+        <select id="readerType" name="r_type">
+            <option value="20">专科生</option>
+            <option value="10">本科生</option>
+            <option value="30">硕士生</option>
+            <option value="40">教师</option>
+        </select><br><br>
+        <label>修改所在单位</label><br>
+        <select id="readerDept" name="r_dept">
+            <option>计算机科学学院</option>
+            <option>机械工程学院</option>
+            <option>文学院</option>
+            <option>教务处</option>
+        </select><br><br>
+        <input id="btn_editUser" type="submit" value="修改"><br>
+    </form>
+</div>
+</body>
+</html>

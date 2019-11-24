@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户首页</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/base/base.js"></script>
+    <script src="/scripts/user/borrowingBooksRecord.js"></script>
+</head>
+<body>
+
+<div th:replace="/user/top2 :: mytop2" ></div>
+
+<div th:replace="/user/side2 :: side2" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+   <h3 style="text-align: center">预约借书单</h3>
+    <table>
+        <tr>
+            <th>借阅顺序号</th>
+            <th>图书名</th>
+            <th>读者</th>
+        </tr>
+        <tr th:each="borrows : ${b}">
+            <td><label th:text="${borrows.getBorrow_id()}"></label></td>
+            <td><label th:text="${borrows.getB_name()}"></label></td>
+            <td><label th:text="${borrows.getR_name()}"></label></td>
+        </tr>
+    </table>
+    <br><br>
+    <div style="position:absolute;right: 110px ">
+        <label id="lab1" th:text="${pageNum}">1</label>/<label id="lab2" th:text="${pageCount}">1</label>
+    </div>
+
+    <a id="prePage" th:href="@{/reader/look_reserve_borrows(pageNum=${pageNum -1})}"  style="position: absolute; right: 140px;background-color: #aaaaaa">上一页</a>
+    <a id="nextPage" th:href="@{/reader/look_reserve_borrows(pageNum=${pageNum +1})}"  style="position: absolute; right: 60px;background-color: #aaaaaa">下一页</a>
+</div>
+</body>
+</html>

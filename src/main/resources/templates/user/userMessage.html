@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户首页</title>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/css/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="/css/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="/css/user/updateUser.css">
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/messages_zh.min.js"></script>
+    <script src="/scripts/jquery-ui.min.js"></script>
+    <script src="/scripts/user/updateUser.js"></script>
+    <script src="/scripts/base/base.js"></script>
+</head>
+<body>
+
+<div th:replace="/user/top2 :: mytop2" ></div>
+
+<div th:replace="/user/side2 :: side2" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <h3 style="text-align: center">个人信息</h3>
+    <table>
+        <tr>
+            <th>借书证号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>读者类别</th>
+            <th>所属院系</th>
+            <th>电话号码</th>
+            <th>借书证状态</th>
+            <th>已借书数量</th>
+        </tr>
+        <tr>
+            <td><label th:text="${session.reader.getR_id()}"></label></td>
+            <td><label th:text="${session.reader.getR_name()}"></label></td>
+            <td><label th:text="${session.reader.getR_sex()}"></label></td>
+            <td th:if="${session.reader.getR_type()} == 10"><label th:text="本科生"></label></td>
+            <td th:if="${session.reader.getR_type()} == 20"><label th:text="专科生"></label></td>
+            <td th:if="${session.reader.getR_type()} == 30"><label th:text="硕士生"></label></td>
+            <td th:if="${session.reader.getR_type()} == 40"><label th:text="教师"></label></td>
+            <td><label th:text="${session.reader.getR_dept()}"></label></td>
+            <td><label th:text="${session.reader.getR_phone()}"></label></td>
+            <td><label th:text="${session.reader.getR_status()}"></label></td>
+            <td><label th:text="${session.reader.getR_borrow_q()}"></label></td>
+        </tr>
+    </table>
+    <br>
+    <button style="position: absolute; right: 40px;background-color: #aaaaaa;" >
+        <i class="fa fa-plus" onclick="javascript:window.location.href='/reader/to_update_reader';">修改信息</i>
+    </button>
+</div>
+</body>
+</html>

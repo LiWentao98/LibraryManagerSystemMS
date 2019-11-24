@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/messages_zh.min.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/Admin/addUser.js"></script>
+
+<script>
+    window.onload=function(){
+        var msg="查不到该用户，请新建用户哦！";
+        alert(msg);
+    }
+</script>
+</head>
+<body>
+
+<div th:replace="/admin/top1 :: mytop" ></div>
+
+<div th:replace="/admin/side1 :: side" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <h3 style="text-align: center">新增用户</h3>
+    <form id="addUserForm" th:action="@{/admin/add_user}" method="post">
+        <label>读者类别</label><br>
+        <select id="readerType" name="r_type">
+            <option th:value="20">专科生</option>
+            <option th:value="10">本科生</option>
+            <option th:value="30">硕士生</option>
+            <option th:value="40">教师</option>
+        </select><br><br>
+        <label>姓名</label><br>
+        <input type="text" id="readerName" name="r_name"><br><br>
+        <label>性别</label><br>
+        <select id="readerSex" name="r_sex">
+            <option>男</option>
+            <option>女</option>
+        </select><br><br>
+        <label>电话号码(用户名)</label><br>
+        <input type="text" id="readerPhone" name="r_phone"><br><br>
+        <label>学号(借书证)</label><br>
+        <input type="number" id="readerId" name="r_id"><br><br>
+        <label>电子邮箱</label><br>
+        <input type="email" id="readerEmail" name="r_email"><br><br>
+        <label>所在单位</label><br>
+        <select id="readerDept" name="r_dept">
+            <option>计算机科学学院</option>
+            <option>机械工程学院</option>
+            <option>文学院</option>
+            <option>教务处</option>
+        </select><br><br>
+        <label>办证日期</label><br>
+        <input type="date" id="readerDateReg" name="r_date_reg"><br>
+        <label>所属管理员</label><br>
+        <input type="text" id="adminId" name="a_id" value="1" readonly="readonly">图书管理员<br><br>
+        <input id="btn_addUser" type="submit" value="确认新建"><br>
+    </form>
+</div>
+</body>
+</html>

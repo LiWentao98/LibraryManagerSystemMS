@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/admin/showCategorys.js"></script>
+</head>
+<body>
+
+<div th:replace="/admin/top1 :: mytop" ></div>
+
+<div th:replace="/admin/side1 :: side" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <h3 style="text-align: center">所有分类号</h3>
+    <table>
+        <tr>
+            <th>分类号id</th>
+            <th>分类号</th>
+            <th>分类号名称</th>
+        </tr>
+        <tr th:each="catelog:${c}">
+            <td><label th:text="${catelog.getC_id()}"></label></td>
+            <td><label th:text="${catelog.getC_number()}"></label></td>
+            <td><label th:text="${catelog.getC_name()}"></label></td>
+            <td><button th:value="${catelog.getC_id()}">删除</button></td>
+        </tr>
+    </table>
+    <br>
+    <div style="position:absolute;right: 110px ">
+        <label id="lab1" th:text="${pageNum}">1</label>/<label id="lab2" th:text="${pageCount}">1</label>
+    </div>
+
+    <a id="prePage" th:href="@{/admin/show_catelogs(pageNum=${pageNum -1})}"  style="position: absolute; right: 140px;background-color: #aaaaaa">上一页</a>
+    <a id="nextPage" th:href="@{/admin/show_catelogs(pageNum=${pageNum +1})}"  style="position: absolute; right: 60px;background-color: #aaaaaa">下一页</a>
+</div>
+</body>
+</html>

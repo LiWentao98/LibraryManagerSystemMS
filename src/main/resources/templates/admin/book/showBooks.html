@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/Admin/showBooks.js"></script>
+</head>
+<body>
+
+<div th:replace="/admin/top1 :: mytop" ></div>
+
+<div th:replace="/admin/side1 :: side" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+
+    <div style="float: none;width: 50%;height: 100%">
+        <h3 style="text-align: center">查询结果</h3>
+        <table>
+            <tr>
+                <th>id</th>
+                <th>书名</th>
+                <th>作者</th>
+                <th>出版社</th>
+                <th>状态</th>
+            </tr>
+            <tr th:each="book:${b}">
+                <td><label th:text="${book.getB_id()}"></label></td>
+                <td><label th:text="${book.getB_name()}"></label></td>
+                <td><label th:text="${book.getB_author()}"></label></td>
+                <td><label th:text="${book.getB_press()}"></label></td>
+                <td><label th:text="${book.getB_status()}"></label></td>
+            </tr>
+        </table>
+
+        <br>
+        <div style="position:absolute;right: 110px ">
+            <label id="lab1" th:text="${pageNum}">1</label>/<label id="lab2" th:text="${pageCount}">1</label>
+        </div>
+
+        <a id="prePage"  th:href="@{/book/show_books_result_page_by_category(pageNum=${pageNum -1},c_id=${bookCategory})}" style="position: absolute; right: 140px;background-color: #aaaaaa">上一页</a>
+        <a id="nextPage"  th:href="@{/book/show_books_result_page_by_category(pageNum=${pageNum +1},c_id=${bookCategory})}" style="position: absolute; right: 60px;background-color: #aaaaaa">下一页</a>
+    </div>
+</div>
+</body>
+</html>
+
+

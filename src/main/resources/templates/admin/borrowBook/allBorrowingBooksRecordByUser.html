@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/Admin/allBorrowingBooksRecord.js"></script>
+</head>
+<body>
+
+<div th:replace="/admin/top1 :: mytop" ></div>
+
+<div th:replace="/admin/side1 :: side" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <h3 style="text-align: center">所有借书记录</h3>
+    <table>
+        <tr>
+            <td>用户</td>
+            <td>书籍</td>
+            <td>借书日期</td>
+            <td>还书日期</td>
+        </tr>
+        <tr th:each="borrowingBooks:${page.getList()}">
+            <td><label th:text="${borrowingBooks.getUser().getUserName()}"></label></td>
+            <td><label th:text="${borrowingBooks.getBook().getBookName()}"></label></td>
+            <td><label th:text="${borrowingBooks.getDateOfBorrowing()}"></label></td>
+            <td><label th:text="${borrowingBooks.getDateOfReturn()}"></label></td>
+        </tr>
+    </table>
+    <br>
+    <div style="position:absolute;right: 110px ">
+        <label id="lab1" th:text="${page.getPageNum()}">1</label>/<label id="lab2" th:text="${page.getPageCount()}">1</label>
+    </div>
+
+    <a id="prePage" href="/allBorrowBooksRecordPage?pageNum=1" th:href="@{/allBorrowBooksRecordPage(pageNum=${page.getPageNum()-1})}" style="position: absolute; right: 140px;background-color: #aaaaaa">上一页</a>
+    <a id="nextPage" href="/allBorrowBooksRecordPage?pageNum=2" th:href="@{/allBorrowBooksRecordPage(pageNum=${page.getPageNum()+1})}" style="position: absolute; right: 60px;background-color: #aaaaaa">下一页</a>
+</div>
+</body>
+</html>

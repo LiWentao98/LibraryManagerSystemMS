@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <script src="/scripts/Admin/editRId.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+</head>
+<body>
+
+<div th:replace="/admin/top1 :: mytop" ></div>
+
+<div th:replace="/admin/side1 :: side" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <div style="float: left;width: 50%;height: 100%"><!--左半部分-->
+        <h3 style="text-align: left">修改状态页面</h3><br><br>
+        <label>请先查询用户</label><br><br>
+        <form th:action="@{/admin/edit_rId_to_search}" id="readerForm" method="post">
+            <label>输入借书证号</label><br>
+            <input type="text" name="r_id" id="r_id"><br><br>
+            <label>读者类别</label><br>
+            <select id="readerType" name="r_type">
+                <option>专科生</option>
+                <option>本科生</option>
+                <option>硕士生</option>
+                <option>教师</option>
+            </select><br><br>
+            <label>所在单位</label><br>
+            <select id="readerDept" name="r_dept">
+                <option>计算机科学学院</option>
+                <option>机械工程学院</option>
+                <option>文学院</option>
+                <option>教务处</option>
+            </select><br><br>
+            <label>输入姓名</label><br>
+            <input type="text" name="r_name" id="r_name"><br><br>
+            <input type="submit" value="查找">
+        </form>
+    </div>
+
+    <div style="float: left;width: 50%;height: 100%"><!--右半部分-->
+        <h3 style="text-align: center">查询结果</h3>
+        <table>
+            <tr>
+                <th>借书证号</th>
+                <th>姓名</th>
+                <th>读者类别</th>
+                <th>所在单位</th>
+                <th>借书证状态</th>
+            </tr>
+            <tr th:each="reader:${r}">
+                <td><label th:text="${reader.getR_id()}"></label></td>
+                <td><label th:text="${reader.getR_name()}"></label></td>
+                <td th:if="${reader.getR_type()} == 10"><label th:text="本科生"></label></td>
+                <td th:if="${reader.getR_type()} == 20"><label th:text="专科生"></label></td>
+                <td th:if="${reader.getR_type()} == 30"><label th:text="硕士生"></label></td>
+                <td th:if="${reader.getR_type()} == 40"><label th:text="教师"></label></td>
+                <td><label th:text="${reader.getR_dept()}"></label></td>
+                <td><label th:text="${reader.getR_status()}"></label></td>
+                <td th:if="${reader.getR_status()} == '有效'"><button id="btn1" th:value="${reader.getR_id()}">挂失借书证</button></td>
+                <td th:if="${reader.getR_status()} == '挂失'"><button id="btn2" th:value="${reader.getR_id()}">解除挂失</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
+
+

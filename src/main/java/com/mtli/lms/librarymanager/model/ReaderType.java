@@ -7,7 +7,7 @@ import lombok.Data;
  * @Author: Mt.Li
 */
 @Data
-public class ReaderType {
+public class ReaderType{
     private Integer r_type;//读者类别
     private String r_type_name;//读者类别名称
     private Integer c_lend_q;//可借书数量

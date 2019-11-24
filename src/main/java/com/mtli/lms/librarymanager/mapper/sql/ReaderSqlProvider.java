@@ -22,21 +22,21 @@ public class ReaderSqlProvider {
           VALUES("r_sex, r_dept","#{r_sex}, #{r_dept}");
           VALUES("r_phone, r_email","#{r_phone}, #{r_email}");
           VALUES("r_date_reg, r_photo","#{r_date_reg}, #{r_photo}");
-          VALUES("r_status, r_borrow_q","#{r_status}, #{r_borrow_q}");
-          VALUES("r_pwd, a_id","#{r_pwd}, #{a_id}");
+          VALUES("r_status","#{r_status}");
+          VALUES("a_id","#{a_id}");
           VALUES("r_type","#{r_type}");
        }}.toString();
    }
 
     /**
      * 删除读者sql
-     * @param reader
+     * @param r_id
      * @return
      */
-   public String deleteReader(Reader reader){
+   public String deleteReader(Integer r_id){
        return new SQL(){{
            DELETE_FROM("reader");
-           if(reader.getR_id() !=null){
+           if(r_id !=null){
                WHERE("r_id = #{r_id}");
            }
        }}.toString();
@@ -62,8 +62,17 @@ public class ReaderSqlProvider {
             if(reader.getR_photo() !=null){
                 SET("r_photo = #{r_photo}");
             }
+            if(reader.getR_type() !=null){
+                SET("r_type = #{r_type}");
+            }
             if(reader.getR_pwd() !=null){
                 SET("r_pwd = #{r_pwd}");
+            }
+            if(reader.getR_status() !=null){
+                SET("r_status = #{r_status}");
+            }
+            if(reader.getR_borrow_q() !=null){
+                SET("r_borrow_q = #{r_borrow_q}");
             }
             if(reader.getR_id() !=null){
                 WHERE("r_id = #{r_id}");

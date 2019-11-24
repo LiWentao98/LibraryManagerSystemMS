@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户首页</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/base/base.js"></script><!--菜单布局 -->
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/messages_zh.min.js"></script>
+    <script src="/scripts/user/findBook.js"></script>
+</head>
+<body>
+
+<div th:replace="/user/top2 :: mytop2" ></div>
+
+<div th:replace="/user/side2 :: side2" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <div style="float: left;width: 50%;height: 100%"><!--左半部分-->
+        <h3 style="text-align:left">查询书籍</h3>
+        <form th:action="@{/book/user_find_books(pageNum=1)}" method="post" id="findBookByNameForm">
+            <label>请输入书名</label>
+            <input type="search" name="bookName"><br><br>
+
+            <label>----搜索条件(可选)----</label><br><br>
+            <label>作者</label><br>
+            <input type="text" id="bookAuthor" name="bookAuthor"><br><br>
+            <label>分类号</label><br>
+            <select id="c_id" name="c_id">
+                <!--<option>计算机技术</option>-->
+                <!--<option>数学</option>-->
+                <!--<option>机械工程</option>-->
+            </select><br><br>
+            <label>出版社</label><br>
+            <input type="text" id="bookPress" name="bookPress"><br><br>
+            <input type="submit" value="查询" style="background-color: #aaaaaa;color: white;">
+        </form>
+    </div>
+
+
+    <div style="float: left;width: 50%;height: 100%"><!--右半部分-->
+        <h3 style="text-align: left">查询结果</h3>
+        <table>
+            <tr>
+                <th>书名</th>
+                <th>作者</th>
+                <th>出版社</th>
+                <th>状态</th>
+                <th>库存</th>
+                <th>操作</th>
+            </tr>
+            <tr th:each="book:${b}">
+               <td><label th:text="${book.getB_name()}"></label></td>
+                <td><label th:text="${book.getB_author()}"></label></td>
+                <td><label th:text="${book.getB_press()}"></label></td>
+                <td><label th:text="${book.getB_status()}"></label></td>
+                <td><label th:text="${book.getB_repertory()}"></label></td>
+                <td th:if="${book.getB_repertory()} > 0"><button th:value="${book.getB_id()}">预约借书</button> </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

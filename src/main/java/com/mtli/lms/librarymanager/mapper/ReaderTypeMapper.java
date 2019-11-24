@@ -1,6 +1,7 @@
 package com.mtli.lms.librarymanager.mapper;
 
 import com.mtli.lms.librarymanager.model.ReaderType;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public interface ReaderTypeMapper {
     void deleteReaderType(Integer id);
     //修改读者类型
     void editReaderType(ReaderType readerType);
-    //查询读者类型
-    List<ReaderType> selectReaderType(Integer id);
+    //查询读者类型(获取相关借书限制信息)
+    @Select("select * from reader_type where r_type = #{rType}")
+    ReaderType selectReaderTypeMessage(Integer rType);
 }

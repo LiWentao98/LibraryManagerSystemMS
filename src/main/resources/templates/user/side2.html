@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<ul th:fragment="side2">
+    <li id="click_1"><a href="#">借阅管理</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun1" class="hidden"><a th:href="@{/reader/look_reserve_borrows(pageNum=1)}">预约记录</a></li>
+        <li id="fun2" class="hidden"><a th:href="@{/reader/look_admin_borrows(pageNum=1)}">办理记录</a></li>
+    </div>
+    <li id="click_2"><a href="#">书籍管理</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun4" class="hidden"><a th:href="@{/reader/to_find_book}">查询书籍</a></li>
+    </div>
+    <li id="click_3"><a href="#">个人信息</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun5" class="hidden"><a th:href="@{/reader/user_message}">我的信息</a></li>
+        <!--<li id="fun6" class="hidden"><a href="#">功能6</a></li>-->
+    </div>
+    <li id="click_4"><a href="#">帮助</a></li>
+    <div class="funBackgroungColor">
+        <li id="fun7" class="hidden"><a href="#">功能7</a></li>
+    </div>
+</ul>
+</html>

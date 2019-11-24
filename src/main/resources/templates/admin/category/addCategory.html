@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/messages_zh.min.js"></script>
+    <script src="/scripts/Admin/addBookCategory.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+</head>
+<body>
+
+<div th:replace="/admin/top1 :: mytop" ></div>
+
+<div th:replace="/admin/side1 :: side" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <div style="float: none;width: 50%;height: 100%"><!--左半部分-->
+        <h3 style="text-align: left">新建类别</h3>
+        <!-- 编号输入 bug category id 作为外键不能自动递增 -->
+        <br><br>
+        <form id="addBookCategoryForm" action="#">
+            <label>编号</label><br>
+            <input id="categoryId" type="text" name="c_number"><br>
+            <label>类别</label><br>
+            <input id="categoryName" type="text" name="c_name"><br><br>
+            <input type="submit" id="btn_addBookCategory" value="添加类别"></input>
+            <!--<input id="btn_addBookCategory" type="submit" value="添加类别">-->
+        </form>
+    </div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户首页</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/base/base.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/messages_zh.min.js"></script>
+    <script src="/scripts/user/borrowingBook.js"></script>
+</head>
+<body>
+
+<div th:replace="/user/top2 :: mytop2" ></div>
+
+<div th:replace="/user/side2 :: side2" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+   <h3 style="text-align: center;">用户借书</h3>
+
+    <form id="borrowingBookForm" action="#" method="post">
+        <label>请输入书籍编号</label><br>
+        <input id="bookId" type="text" name="bookId"><br><br>
+        <input id="btn1" type="submit" value="确认借书" style="background-color: #aaaaaa;color: white;">
+    </form>
+</div>
+</body>
+</html>

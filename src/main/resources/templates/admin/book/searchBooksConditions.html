@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/Admin/addCategoryList.js"></script>
+</head>
+<body>
+
+<div th:replace="/admin/top1 :: mytop" ></div>
+
+<div th:replace="/admin/side1 :: side" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <div style="float: left;width: 50%;height: 100%">
+        <h3 style="text-align: left">查询书籍</h3>
+        <label>按类别查找</label>
+        <form th:action="@{/book/show_books_result_page_by_category}" id="bookCategoryForm">
+            <select id="c_id" name="c_id">
+                <!--<option>计算机技术</option>-->
+                <!--<option>数学</option>-->
+                <!--<option>机械工程</option>-->
+            </select><br><br>
+            <input type="text" name="pageNum" value="1" style="display: none">
+            <input type="submit" value="查找">
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+

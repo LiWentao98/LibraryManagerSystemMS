@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/messages_zh.min.js"></script>
+    <script src="/scripts/Admin/addBook.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+</head>
+<body>
+
+<div th:replace="/admin/top1 :: mytop" ></div>
+
+<div th:replace="/admin/side1 :: side" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <h3 style="text-align: center">添加书籍</h3>
+    <form id="addBookForm" action="#">
+        <label>最后编号</label><br>
+        <select id="b_code_last" name="b_code_last" readonly="readonly">
+        </select><br>
+        <label>图书编号</label><br>
+        <input id ="bookCode" type="text" name="b_code"><br>
+        <label>书 名</label><br>
+        <input id="bookName" type="text" name="b_name"><br>
+        <label>作 者</label><br>
+        <input id="bookAuthor" type="text" name="b_author"><br>
+        <label>出版社</label><br>
+        <input id="bookPublish" type="text" name="b_press"><br>
+        <label>出版日期</label><br>
+        <input id ="bookDatePress" type="date" name="b_date_press"><br>
+        <label>isbn</label><br>
+        <input id ="bookIsbn" type="text" name="b_isbn"><br>
+        <label>语言</label><br>
+        <select id="bookLanguage" name="b_language"><br>
+            <option value="0">中文</option>
+            <option value="1">英文</option>
+            <option value="2">日文</option>
+            <option value="3">俄文</option>
+            <option value="4">德文</option>
+            <option value="5">法文</option>
+        </select><br>
+        <label>类 别</label><br>
+        <select id="bookCategory" name="b_catalog">
+        </select><br><br>
+        <label>页数</label><br>
+        <input id="bookPages" type="number" name="b_pages" min="1"><br>
+        <label>价 格</label><br>
+        <input id="bookPrice" type="text" name="b_price"><br>
+        <label>简 介</label><br>
+        <input id="bookIntroduction" type="text" name="b_brief"><br>
+        <label>入库数量</label><br>
+        <input id="bookRepertory" type="number" name="b_repertory" min="0"><br>
+        <input id="btn1" type="submit" value="添加">
+    </form>
+</div>
+</body>
+</html>

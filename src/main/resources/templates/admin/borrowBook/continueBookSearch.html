@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/Admin/continueBook.js"></script>
+</head>
+<body>
+
+<div th:replace="/admin/top1 :: mytop" ></div>
+
+<div th:replace="/admin/side1 :: side" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <div style="margin-left:18%;padding:1px 16px;">
+        <div style="float: left;width: 50%;height: 100%"><!--左半部分-->
+            <h3 style="text-align:left">查询书籍</h3>
+            <form th:action="@{/admin/continue_book_search(pageNum=1)}" method="post">
+                <label>请输入借书证</label>
+                <input type="text" name="rId"><br><br>
+                <input type="submit" value="查询" style="background-color: #aaaaaa;color: white;">
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

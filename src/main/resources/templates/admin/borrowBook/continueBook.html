@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/Admin/continueBook.js"></script>
+</head>
+<body>
+
+<div th:replace="/admin/top1 :: mytop" ></div>
+
+<div th:replace="/admin/side1 :: side" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <h3 style="text-align: center" >未归还的借阅单</h3>
+    <table>
+        <tr>
+            <th>借书证号</th>
+            <th>书名</th>
+            <th>作者</th>
+            <th>应还日期</th>
+            <th>续借次数</th>
+            <th>超期天数</th>
+            <th>应罚金额</th>
+        </tr>
+        <tr th:each="borrow:${b}">
+            <td style="display:none" id="readerId" th:text="${borrow.getR_id()}"></td>
+            <td><label th:text="${borrow.getBorrow_id()}"></label></td>
+            <td><label th:text="${borrow.getB_name()}"></label></td>
+            <td><label th:text="${borrow.getB_author()}"></label></td>
+            <td><label th:text="${borrow.getId_date_ret_plan()}"></label></td>
+            <td><label th:text="${borrow.getId_continue_times()}"></label></td>
+            <td><label th:text="${borrow.getId_over_day()}"></label></td>
+            <td><label th:text="${borrow.getId_punish_money()}"></label></td>
+            <td><button th:value="${borrow.getBorrow_id()}">续借</button></td>
+        </tr>
+    </table>
+    <br>
+    <div style="position:absolute;right: 110px ">
+        <label id="lab1" th:text="${pageNum}">1</label>/<label id="lab2" th:text="${pageCount}">1</label>
+    </div>
+
+    <a id="prePage" th:href="@{/admin/show_users(pageNum=${pageNum -1})}"  style="position: absolute; right: 140px;background-color: #aaaaaa">上一页</a>
+    <a id="nextPage" th:href="@{/admin/show_users(pageNum=${pageNum +1})}"  style="position: absolute; right: 60px;background-color: #aaaaaa">下一页</a>
+</div>
+</body>
+</html>

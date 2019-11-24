@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/Admin/solveReserve.js"></script>
+</head>
+<body>
+
+<div th:replace="/admin/top1 :: mytop" ></div>
+
+<div th:replace="/admin/side1 :: side" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <h3 style="text-align: center">所有预约单</h3>
+    <table>
+        <tr>
+            <th>借书顺序号</th>
+            <th>读者</th>
+            <th>所借图书</th>
+        </tr>
+        <tr th:each="b:${b}">
+            <td th:text="${b.getBorrow_id()}"></td>
+            <td th:text="${b.getR_name()}"></td>
+            <td th:text="${b.getB_name()}"></td>
+            <td style="display:none" id="readerId" th:text="${b.getR_id()}"></td>
+            <td style="display:none" id="bookId" th:text="${b.getB_id()}"></td>
+            <td><button th:value="${b.getBorrow_id()}">同意借书</button></td>
+        </tr>
+    </table>
+    <br>
+
+    <div style="position:absolute;right: 110px ">
+        <label id="lab1" th:text="${pageNum}">1</label>/<label id="lab2" th:text="${pageCount}">1</label>
+    </div>
+
+    <a id="prePage" th:href="@{/admin/solve_reserve(pageNum=${pageNum -1})}"  style="position: absolute; right: 140px;background-color: #aaaaaa">上一页</a>
+    <a id="nextPage" th:href="@{/admin/solve_reserve(pageNum=${pageNum +1})}"  style="position: absolute; right: 60px;background-color: #aaaaaa">下一页</a>
+</div>
+</body>
+</html>

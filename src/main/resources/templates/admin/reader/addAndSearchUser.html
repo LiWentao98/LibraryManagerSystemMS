@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script src="/scripts/messages_zh.min.js"></script>
+    <script src="/scripts/base/base.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+</head>
+<body>
+
+<div th:replace="/admin/top1 :: mytop" ></div>
+
+<div th:replace="/admin/side1 :: side" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <div style="float: none;width: 50%;height: 100%">
+    <h3 style="text-align: center">根据信息先查询用户</h3>
+    <form id="addUserForm" th:action="@{/admin/search_new_user}">
+        <label>读者类别</label><br>
+        <select id="readerType" name="rType">
+            <option>专科生</option>
+            <option>本科生</option>
+            <option>硕士生</option>
+            <option>教师</option>
+        </select><br><br>
+        <label>所在单位</label><br>
+        <select id="readerDept" name="rDept">
+            <option>计算机科学学院</option>
+            <option>机械工程学院</option>
+            <option>文学院</option>
+            <option>教务处</option>
+        </select><br><br>
+        <label>姓名</label><br>
+        <input type="text" id="readerName" name="rName"><br><br>
+        <input id="btn_addUser" type="submit" value="查询"><br>
+    </form>
+</div>
+</div>
+</body>
+</html>

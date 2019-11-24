@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>查看未归还借阅单</title>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <link href="/css/myUIstyle.css" rel="stylesheet" />
+    <script src="/scripts/base/base.js"></script>
+    <script src="/scripts/Admin/lookNoReturnBorrows.js"></script>
+</head>
+<body>
+
+<div th:replace="/admin/top1 :: mytop" ></div>
+
+<div th:replace="/admin/side1 :: side" ></div>
+
+<div style="margin-left:18%;padding:1px 16px;">
+    <h3 style="text-align: center">未还借阅单</h3>
+    <table>
+        <tr>
+            <th>借阅顺序号</th>
+            <th>借书人</th>
+            <th>图书名</th>
+            <th>续借次数</th>
+            <th>借书日期</th>
+            <th>应还日期</th>
+            <th>超出天数</th>
+            <th>超出金额</th>
+            <th>罚款金额</th>
+        </tr>
+        <tr th:each="borrows : ${b}">
+            <td th:text="${borrows.getBorrow_id()}"></td>
+            <td th:text="${borrows.getR_name()}"></td>
+            <td th:text="${borrows.getB_name()}"></td>
+            <td th:text="${borrows.getId_continue_times()}"></td>
+            <td th:text="${borrows.getId_date_out()}"></td>
+            <td th:text="${borrows.getId_date_ret_plan()}"></td>
+            <td th:text="${borrows.getId_over_day()}"></td>
+            <td th:text="${borrows.getId_over_money()}"></td>
+            <td th:text="${borrows.getId_punish_money()}"></td>
+            <td style="display:none" id="readerId" th:text="${borrows.getR_id()}"></td>
+            <td style="display:none" id="bookId" th:text="${borrows.getB_id()}"></td>
+            <td><button th:value="${borrows.getBorrow_id()}">还书</button></td>
+        </tr>
+    </table>
+    <br><br>
+
+    <div style="position:absolute;right: 110px ">
+        <label id="lab1" th:text="${pageNum}"></label>/<label id="lab2" th:text="${pageCount}"></label>
+    </div>
+    <a id="prePage" th:href="@{/admin/look_borrows_no_return(pageNum=${pageNum -1})}" style="position: absolute; right: 140px;background-color: #aaaaaa">上一页</a>
+    <a id="nextPage" th:href="@{/admin/look_borrows_no_return(pageNum=${pageNum +1})}" style="position: absolute; right: 60px;background-color: #aaaaaa">下一页</a>
+</div>
+
+
+</body>
+</html>
